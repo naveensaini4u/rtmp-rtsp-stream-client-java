@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import static android.hardware.Camera.Parameters.WHITE_BALANCE_AUTO;
+
 /**
  * Created by pedro on 20/01/17.
  *
@@ -139,6 +141,7 @@ public class Camera1ApiManager implements Camera.PreviewCallback, Camera.FaceDet
       isPortrait = context.getResources().getConfiguration().orientation
           == Configuration.ORIENTATION_PORTRAIT;
       Camera.Parameters parameters = camera.getParameters();
+      parameters.setWhiteBalance(WHITE_BALANCE_AUTO);
       parameters.setPreviewSize(width, height);
       parameters.setPreviewFormat(imageFormat);
       int[] range = adaptFpsRange(fps, parameters.getSupportedPreviewFpsRange());
